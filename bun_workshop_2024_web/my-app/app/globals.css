@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.form-control {
+  @apply border border-gray-300 dark:border-gray-600 p-2 rounded bg-gray-50 dark:bg-gray-700 dark:text-white;
+}
+
+.btn {
+  @apply bg-indigo-600 text-white p-2 rounded-full hover:bg-indigo-700 transition-colors;
+}
+
+.sidebar {
+  @apply bg-gray-800 text-gray-200 shadow-sm min-h-screen w-64;
+}
+
+.sidebar-item {
+  @apply flex items-center p-2 text-gray-300 rounded hover:bg-gray-300 hover:text-gray-800;
+}
+
+.sidebar-nav {
+  @apply p-4 bg-gradient-to-t from-gray-700 to-gray-950 border-t border-gray-700 min-h-screen;
+}
+
+.sidebar-nav ul {
+  @apply space-y-2;
+}
+
+.sidebar-header {
+  @apply flex items-center justify-center p-4 bg-gradient-to-tl from-indigo-600 to-pink-600 ml-4 mr-4 rounded-2xl mb-4;
+}
+
+.card {
+  @apply bg-gray-800 p-8 rounded-2xl shadow-md h-full opacity-90;
+}
+
+.card input {
+  @apply w-full mt-2;
+}
+
+.card h1 {
+  @apply text-2xl font-bold text-gray-200 mb-5;
+}
+
+.card-body {
+  @apply text-gray-400;
+}
+
+.btn-primary {
+  @apply bg-indigo-500 text-white px-4 py-2 rounded-full mt-5 hover:bg-indigo-600
+}
+
+.table {
+  @apply w-full mt-3;
+}
+
+.table th {
+  @apply text-left p-4 bg-gray-950 text-gray-400;
+}
+
+.table th:first-child {
+  @apply rounded-tl-2xl;
+}
+
+.table th:last-child {
+  @apply rounded-tr-2xl;
+}
+
+.table tbody td {
+  @apply p-4 bg-gray-900 text-gray-400 border-b border-gray-700;
+}
+
+.table tbody tr:last-child td:first-child {
+  @apply rounded-bl-2xl;
+}
+
+.table tbody tr:last-child td:last-child {
+  @apply rounded-br-2xl;
+}
+
+.table tbody tr:last-child td {
+  @apply border-b-0;/*แถวสุดท้ายจะไม่มีเส้นข้างล่าง*/
+}
+.btn-edit {
+  @apply bg-gray-700 text-blue-400 px-4 py-2 rounded-none mr-1;
+}
+
+.btn-delete {
+  @apply bg-gray-700 text-red-400 px-4 py-2 rounded-none;
+}
