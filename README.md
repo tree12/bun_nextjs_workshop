@@ -240,29 +240,6 @@ Open <http://localhost:3000>, sign in, and you should land on a page that matche
 
 ---
 
-## Notable Implementation Details
-
-- **Soft deletes everywhere.** Users, devices, and repair records flip `status` to `inactive` instead of being removed, preserving history for reporting.
-- **Role-driven navigation.** The sidebar derives the menu from `/api/user/level` rather than trusting the stored level in `localStorage`, so revoking access on the server takes effect on the next render.
-- **Stateless auth.** JWTs are signed with HS256; the API has no session store.
-- **Aggregated reporting in SQL.** `dashboard` and `incomePerMonth` use Prisma's `aggregate` + day/month windows to compute revenue series server-side, so the chart layer just renders numbers.
-- **Single source of truth for API URL.** [app/config.ts](bun_workshop_2024_web/my-app/app/config.ts) centralises `apiUrl`, the JWT storage key, and a shared confirm-delete dialog used across pages.
-
----
-
-## Possible Improvements (Backlog Ideas)
-
-These are intentionally out of scope for the current build, but worth calling out for portfolio context:
-
-- Hash passwords with `bun.password` / Argon2 instead of storing plaintext.
-- Move the JWT secret from a hard-coded string in [index.ts](bun_workshop_2024_api/app/src/index.ts) to an environment variable.
-- Use the JWT middleware on every protected route, not only `/api/company/info`.
-- Add an upload pipeline for `imageBeforeRepair` / `imageAfterRepair` (currently typed but unwired).
-- Add automated tests (Bun's built-in test runner on the API side; Playwright on the web).
-- Containerise with Docker Compose for one-command spin-up.
-
----
-
 ## License
 
 This is a personal learning / portfolio project — feel free to read, fork, and adapt.
